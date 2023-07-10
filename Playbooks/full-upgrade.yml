@@ -1,0 +1,10 @@
+---
+
+- hosts: linux
+  become: yes
+  tasks:
+  
+  - name: Doing a full upgrade
+	apt: 
+        update_cache: yes
+        upgrade: 'yes'
