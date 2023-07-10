@@ -1,5 +1,6 @@
 ---
 
+- hosts: "windows"
 - name: Check for available Windows updates
   ansible.windows.win_updates:
     category_names:
@@ -19,3 +20,22 @@
   when: win_updates_result.updates|length > 0
   tags:
     - windows_update
+
+- hosts: "linux"
+  become: yes
+  tasks:
+    - name: Doing full-upgrade on host
+      apt:
+        update_cache: yes
+        upgrade: 'yes'
+	upgrade: 'dist'
+
+- hosts: "linux"
+  become: true
+  tasks:
+   - name: Installing Packages
+      apt:
+	- Discord
+	- Lutris
+	- Steam
+	
