@@ -1,22 +1,37 @@
----
-
-- hosts: all
-  become: yes
-  pre_tasks
-
-  - name: update repository index (Zorin)
-  tags: always
-  apt:
-    update_cache: yes
-  changed_when: false
-  when: ansible_distribution == "Zorin"
-
-- hosts: windows
-  become: yes
-  roles:
-    - windows
-
-- hosts: linux
-  become: yes
-  roles:
-    - linux
+ ---
+ 
+ - hosts: all
+   become: true
+   pre_tasks:
+   
+   - name: update repository index (Zorin)
+     tags: always
+     apt:
+       update_cache: yes
+     changed_when: false
+     when: ansible_distribution == "Zorin"
+ 
+ - hosts: all
+   become: true
+   roles:
+     - base
+    
+ - hosts: workstations
+   become: true
+   roles:
+     - workstations
+ 
+ - hosts: web_servers
+   become: true
+   roles:
+     - web_servers
+ 
+ - hosts: db_servers
+   become: true
+   roles:
+     - db_servers
+ 
+ - hosts: file_servers
+   become: true
+   roles:
+     - file_servers
