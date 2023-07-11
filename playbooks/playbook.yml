@@ -1,9 +1,17 @@
 ---
 
-- hosts: all
+- hosts: linux
   become: true
   tasks:
   
-  - name:
+  - name: Perform full upgrade on OS
+    apt:
+      update_cache: yes
+      upgrade: yes
+
+  - name: Install packages
     apt:
       name:
+        Discord
+        Lutris
+      state: latest
