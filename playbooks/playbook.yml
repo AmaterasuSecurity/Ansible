@@ -4,16 +4,12 @@
   become: true
   tasks:
   
-  - name: Perform full upgrade on OS
-    apt:
-      update_cache: yes
-      upgrade: yes
-    when: ansible_distribution == "Zorin"
-  
-  - name: Install packages
+  - name: Perform full upgrade on OS and Install Packages
     apt:
       name:
         - Discord
         - Lutris
+      update_cache: yes
+      upgrade: yes
       state: latest
     when: ansible_distribution == "Zorin"
