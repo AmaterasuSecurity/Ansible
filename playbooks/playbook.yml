@@ -11,5 +11,5 @@
         - Lutris
       state: latest
       update_cache: yes
-      upgrade: yes
+      upgrade: dist
       when: ansible_distribution == "Zorin"
