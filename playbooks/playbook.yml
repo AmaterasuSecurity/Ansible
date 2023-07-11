@@ -8,10 +8,12 @@
     apt:
       update_cache: yes
       upgrade: yes
-
+    when: ansible_distribution == "Zorin"
+  
   - name: Install packages
     apt:
       name:
         Discord
         Lutris
       state: latest
+    when: ansible_distribution == "Zorin"
