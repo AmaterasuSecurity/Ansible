@@ -1,0 +1,17 @@
+---
+
+- hosts: linux
+  become: true
+  ignore_unreachable: true
+  tasks:
+  
+  - name: Perform full upgrade on OS and Install Packages
+   
+     package:
+      name:
+        - Discord
+        - Lutris
+        - Steam
+      state: latest
+      update_cache: yes
+      upgrade: dist

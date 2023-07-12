@@ -1,15 +1,7 @@
----
-
-- hosts: linux
+- name: Upgrade OS and install packages
+  hosts: localhost
   become: true
-  tasks:
-  
-  - name: Perform full upgrade on OS and Install Packages
-    package:
-      name:
-        - Discord
-        - Lutris
-      state: latest
-      update_cache: yes
-      upgrade: dist
-    when: ansible_distribution == "Zorin"
+
+  roles:
+    - upgrade
+    - install-packages
