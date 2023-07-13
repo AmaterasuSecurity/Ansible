@@ -1,0 +1,8 @@
+---
+
+- name: Upgrade OS and install packages
+  hosts: localhost
+  become: true
+  roles:
+    - { role: roles/upgrade, message: "Upgrade success" }
+    - { role: roles/install-packages, message: "Packages installed" }

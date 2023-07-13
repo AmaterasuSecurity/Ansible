@@ -1,0 +1,22 @@
+---
+
+- name: Install updates
+  win_updates:
+    category_names:
+    - CriticalUpdates
+    - SecurityUpdates
+    state: installed
+  register: update_result
+
+- name: Reboot host if required
+  win_reboot:
+  when: update_result.reboot_required
+
+- name: Install game software
+  win_chocolatey:
+    name: '{{ item }}'
+    state: present
+  loop:
+  - steam
+  - battlenet
+  - discord

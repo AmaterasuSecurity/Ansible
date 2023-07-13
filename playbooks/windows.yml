@@ -1,0 +1,9 @@
+---
+
+- name: Getting windows ready
+  hosts: localhost
+  become: true
+  roles:
+   - role:
+      - { role: roles/windows, message: "Doing the things" }
+
